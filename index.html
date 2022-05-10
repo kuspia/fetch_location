@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Click the button to get your coordinates:</p>
+<br>
+<p id="cnt"></p>
+
+
+
+
+<script>
+
+var x = document.getElementById("demo");
+var yy = document.getElementById("cnt");
+
+
+function showPosition(position) 
+{
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;  
+}
+
+var id, target, options;
+var cnt = 0 ;
+
+
+function success(pos)
+{
+  cnt = cnt+1;
+
+  var crd = pos.coords;
+  x.innerHTML="Latitude: " + crd.latitude + 
+    "<br>Longitude: " + crd.longitude;  
+
+    yy.innerHTML="cnt: " + cnt;  
+
+
+  if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
+    console.log('Congratulations, you reached the target');
+    navigator.geolocation.clearWatch(id);
+  }
+}
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+
+target = { //if needed you can specify it actually !!
+  latitude : 0,
+  longitude: 0
+};
+
+options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+id = navigator.geolocation.watchPosition(success, error, options);
+
+
+</script>
+
+</body>
+</html>
