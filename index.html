@@ -23,13 +23,14 @@ function showPosition(position)
 
 var id, target, options;
 var cnt = 0 ;
-
+var crd ;
+    
 
 function success(pos)
 {
   cnt = cnt+1;
 
-  var crd = pos.coords;
+  crd = pos.coords;
   x.innerHTML="Latitude: " + crd.latitude + 
     "<br>Longitude: " + crd.longitude;  
 
