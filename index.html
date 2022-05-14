@@ -79,15 +79,11 @@ var id, target, options;
 var crd ;
 
 var cnt = 2 ;
-
 function success(pos)
 {
 
-	cnt+=1;
-
 crd = pos.coords;
-
-document.getElementById("lat").value = crd.latitude+cnt;
+document.getElementById("lat").value = crd.latitude;
 document.getElementById("lon").value = crd.longitude;
 document.getElementById("eid").value = "frontend@gmail.com";
 document.getElementById("utype").value = "u";
